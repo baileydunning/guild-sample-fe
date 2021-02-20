@@ -27,7 +27,7 @@ const Header = ({ students, fetchStudentInfo }) => {
       <Link to='/'>
         <h1>Course Catalog</h1>
       </Link>
-      <select onChange={(e) => handleStudentSelection(e.target.value)}>
+      <select data-testid='select-form' onChange={(e) => handleStudentSelection(e.target.value)}>
         <option value={''}>Select a student</option>
         { createStudentDropdown() }
       </select>
