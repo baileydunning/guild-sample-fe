@@ -29,6 +29,9 @@ const Header = ({ students, selectStudent }) => {
         <option value={''}>Select a student</option>
         { createStudentDropdown() }
       </select>
+      {student &&
+        <Link to={`/student/${student}`}>See Schedule</Link>
+      }
     </header>
   )
 }
