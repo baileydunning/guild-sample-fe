@@ -18,7 +18,9 @@ const CourseContainer = ({ courses }) => {
   }
 
   return (
-    <p>this is where courses go</p>
+    <section>
+      { createCourseCards() }
+    </section>
   )
 }
 
