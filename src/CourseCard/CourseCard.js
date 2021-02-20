@@ -18,6 +18,7 @@ const CourseCard = ({ id, name, days, time, students }) => {
       <h2>{ name }</h2>
       <p> {formatTime(time[0])} - {formatTime(time[1])} </p>
       <p> {formatDays()} </p>
+      <button>Register</button>
     </Fragment>
   )
 }
