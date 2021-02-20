@@ -17,7 +17,7 @@ const App = () => {
   }, [])
 
   return (
-    <AppContext.Provider>
+    <AppContext.Provider value={courses}>
       <Header />
       <Switch>
         <Route 
