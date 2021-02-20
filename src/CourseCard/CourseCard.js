@@ -1,5 +1,4 @@
 import { Fragment, useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
 import AppContext from '../App/AppContext'
 import { registerStudent } from '../apiCalls'
 
@@ -27,11 +26,11 @@ const CourseCard = ({ id, name, days, time, students }) => {
     }
   }
 
-  const handleRegistration = () => {
+  const handleRegistration = (enrollmentStatus) => {
     if (!selectedStudent) {
       alert('Please select a student from the dropdown to register for this course')
     } else {
-      let student = { id: selectedStudent.id }
+      let student = { id: selectedStudent.id, enrolled: enrollmentStatus }
       registerStudent(id, student)
     }
   }
@@ -43,8 +42,8 @@ const CourseCard = ({ id, name, days, time, students }) => {
       <p> { formatDays() } </p>
       {
         !checkRegistrationStatus() ?
-        <button onClick={() => handleRegistration()}>Register</button> :
-        <button>Remove Course</button>
+        <button onClick={() => handleRegistration(true)}>Register</button> :
+        <button onClick={() => handleRegistration(false)}>Remove Course</button>
       }
     </Fragment>
   )
