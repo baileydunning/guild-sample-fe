@@ -19,17 +19,19 @@ const CourseCard = ({ id, name, days, time, students }) => {
   }
 
   const checkRegistrationStatus = () => {
-    const truthyRegistration = students.find(student => {
-      return student.id === selectedStudent
-    })
-    return truthyRegistration ? true : false
+    if (selectedStudent) {
+      const truthyRegistration = students.find(student => {
+        return student.id === selectedStudent.id
+      })
+      return truthyRegistration ? true : false
+    }
   }
 
   const handleRegistration = () => {
     if (!selectedStudent) {
       alert('Please select a student from the dropdown to register for this course')
     } else {
-      let student = { id: selectedStudent }
+      let student = { id: selectedStudent.id }
       registerStudent(id, student)
     }
   }
@@ -37,8 +39,8 @@ const CourseCard = ({ id, name, days, time, students }) => {
   return (
     <Fragment>
       <h2>{ name }</h2>
-      <p> {formatTime(time[0])} - {formatTime(time[1])} </p>
-      <p> {formatDays()} </p>
+      <p> { formatTime(time[0]) } - { formatTime(time[1]) } </p>
+      <p> { formatDays() } </p>
       {
         !checkRegistrationStatus() ?
         <button onClick={() => handleRegistration()}>Register</button> :

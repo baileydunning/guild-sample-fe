@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = ({ students, selectStudent }) => {
+const Header = ({ students, fetchStudentInfo }) => {
   const [student, setStudent] = useState(null)
 
   const createStudentDropdown = () => {
@@ -18,7 +18,7 @@ const Header = ({ students, selectStudent }) => {
 
   const handleStudentSelection = (id) => {
     id = !id ? '' : parseInt(id)
-    selectStudent(id)
+    fetchStudentInfo(id)
     setStudent(id)
   }
 
