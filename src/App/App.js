@@ -1,8 +1,13 @@
+import React from 'react'
+import AppContext from './AppContext'
+import Header from '../Header/Header'
 import './App.scss'
 
 const App = () => {
   return (
-    <h1>Course Catalog</h1>
+    <AppContext.Provider>
+      <Header />
+    </AppContext.Provider>
   )
 }
 
