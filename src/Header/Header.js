@@ -1,7 +1,9 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = ({ students }) => {
+const Header = ({ students, selectStudent }) => {
+  const [student, setStudent] = useState(null)
+
   const createStudentDropdown = () => {
     return students.map(student => {
       return (
@@ -14,10 +16,16 @@ const Header = ({ students }) => {
     })
   }
 
+  const handleStudentSelection = (id) => {
+    id = !id ? '' : parseInt(id)
+    selectStudent(id)
+    setStudent(id)
+  }
+
   return (
     <header>
       <Link to='/'><h1>Course Catalog</h1></Link>
-      <select>
+      <select onChange={(e) => handleStudentSelection(e.target.value)}>
         <option value={''}>Select a student</option>
         { createStudentDropdown() }
       </select>

@@ -10,6 +10,7 @@ import './App.scss'
 const App = () => {
   const [courses, setCourses] = useState([])
   const [students, setStudents] = useState([])
+  const [studentSelection, setStudentSelection] = useState(null)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -24,9 +25,16 @@ const App = () => {
       .catch(err => setError(err))
   }, [])
 
+  const selectStudent = (id) => {
+    setStudentSelection(id)
+  }
+
   return (
     <AppContext.Provider value={courses}>
-      <Header students={students}/>
+      <Header 
+        students={students}
+        selectStudent={selectStudent}
+      />
       <Switch>
         <Route 
           exact
