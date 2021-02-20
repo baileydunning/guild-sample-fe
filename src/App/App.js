@@ -4,11 +4,12 @@ import AppContext from './AppContext'
 import Header from '../Header/Header'
 import CourseContainer from '../CourseContainer/CourseContainer'
 import Error from '../Error/Error'
-import { getCourses } from '../apiCalls'
+import { getCourses, getStudents } from '../apiCalls'
 import './App.scss'
 
 const App = () => {
   const [courses, setCourses] = useState([])
+  const [students, setStudents] = useState([])
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -17,9 +18,15 @@ const App = () => {
     .catch(err => setError(err))
   }, [])
 
+  useEffect(() => {
+    getStudents()
+      .then(data => setStudents(data.allStudents))
+      .catch(err => setError(err))
+  }, [])
+
   return (
     <AppContext.Provider value={courses}>
-      <Header />
+      <Header students={students}/>
       <Switch>
         <Route 
           exact
