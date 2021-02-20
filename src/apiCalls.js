@@ -18,7 +18,8 @@ export const getStudent = (id) => {
     .then(res => res.json())
 }
 
-export const registerStudent = (courseId, studentId) => {
+export const registerStudent = (courseId, studentId, status) => {
+  
   return fetch(`http://localhost:4000/courses/${courseId}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
