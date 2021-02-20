@@ -28,9 +28,10 @@ const App = () => {
   const selectStudent = (id) => {
     setStudentSelection(id)
   }
-
+  
   return (
-    <AppContext.Provider value={courses}>
+    <AppContext.Provider value={studentSelection}>
+      { error && <Error /> }
       <Header 
         students={students}
         selectStudent={selectStudent}
