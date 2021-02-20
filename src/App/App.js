@@ -17,7 +17,7 @@ const App = () => {
     getCourses()
     .then(data => setCourses(data.allCourses))
     .catch(err => setError(err))
-  }, [])
+  }, [courses])
 
   useEffect(() => {
     getStudents()
