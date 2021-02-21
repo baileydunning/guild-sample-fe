@@ -22,3 +22,5 @@ On another tab:
   + Open `localhost:3000` in your browser
 + To run the test suite:
   + `npm test`
+
+Disclaimer: due to time constraints, I decided to omit styling to focus on more functionality.
