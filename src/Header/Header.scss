@@ -1,0 +1,19 @@
+.header {
+  text-align: center;
+}
+
+.title {
+  text-decoration: none;
+  color: navy;
+  &:hover {
+    transition-duration: 1s;
+    color: blue;
+  }
+}
+
+.select-form {
+  width: 30em;
+  height: 3em;
+  outline: none;
+  margin-bottom: 2%;
+}
