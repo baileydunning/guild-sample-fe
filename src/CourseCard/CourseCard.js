@@ -1,6 +1,7 @@
-import { Fragment, useContext, useState } from 'react'
+import { useContext } from 'react'
 import AppContext from '../App/AppContext'
 import { registerStudent } from '../apiCalls'
+import './CourseCard.scss'
 
 const CourseCard = ({ id, name, days, time, students }) => {
   const selectedStudent = useContext(AppContext)
@@ -36,7 +37,7 @@ const CourseCard = ({ id, name, days, time, students }) => {
   }
 
   return (
-    <Fragment>
+    <div className='card'>
       <h2>{ name }</h2>
       <p> { formatTime(time[0]) } - { formatTime(time[1]) } </p>
       <p> { formatDays() } </p>
@@ -45,7 +46,7 @@ const CourseCard = ({ id, name, days, time, students }) => {
         <button onClick={() => handleRegistration(true)}>Register</button> :
         <button onClick={() => handleRegistration(false)}>Remove Course</button>
       }
-    </Fragment>
+    </div>
   )
 }
 
