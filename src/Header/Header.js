@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Header.scss'
 
 const Header = ({ students, fetchStudentInfo }) => {
   const [student, setStudent] = useState(null)
@@ -9,7 +10,8 @@ const Header = ({ students, fetchStudentInfo }) => {
       return (
         <option
           key={ student.id }
-          value={ student.id }>
+          value={ student.id }
+          className='dropdown-option'>
           { student.name }
         </option>
       )
@@ -17,20 +19,31 @@ const Header = ({ students, fetchStudentInfo }) => {
   }
 
   const handleStudentSelection = (id) => {
-    id = !id ? '' : parseInt(id)
+    id = !id ? '' : +id
     fetchStudentInfo(id)
     setStudent(id)
   }
 
   return (
-    <header>
-      <Link to='/'>
+    <header className='header'>
+      <Link to='/' className='title'>
         <h1>Course Catalog</h1>
       </Link>
-      <select data-testid='select-form' onChange={(e) => handleStudentSelection(e.target.value)}>
-        <option value={''}>Select a student</option>
-        { createStudentDropdown() }
-      </select>
+      <form>
+        <select
+          className='select-form' 
+          data-testid='select-form' 
+          onChange={(e) => handleStudentSelection(e.target.value)}
+        >
+          <option 
+            value={''} 
+            className='dropdown-option'
+          >
+            Select a student
+          </option>
+          { createStudentDropdown() }
+        </select>
+      </form>
       {student &&
         <Link to={`/student/${student}`}>See Schedule</Link>
       }

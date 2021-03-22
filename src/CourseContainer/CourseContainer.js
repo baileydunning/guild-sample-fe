@@ -1,4 +1,5 @@
 import CourseCard from '../CourseCard/CourseCard'
+import './CourseContainer.scss'
 
 const CourseContainer = ({ courses }) => {
 
@@ -18,7 +19,7 @@ const CourseContainer = ({ courses }) => {
   }
 
   return (
-    <section>
+    <section className='course-container'>
       { createCourseCards() }
     </section>
   )

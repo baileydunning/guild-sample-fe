@@ -46,9 +46,8 @@ const App = () => {
     }, [])
   }
   
-  return (
+  return !error ? (
     <AppContext.Provider value={ studentSelection }>
-      { error && <Error /> }
       <Header 
         students={ students }
         fetchStudentInfo={ fetchStudentInfo }
@@ -81,8 +80,10 @@ const App = () => {
             <Error />
           }
         />
-      </Switch>
+      </Switch> 
     </AppContext.Provider>
+  ) : (
+    <Error /> 
   )
 }
 
